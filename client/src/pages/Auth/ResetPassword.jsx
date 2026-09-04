@@ -16,7 +16,7 @@ const ResetPassword = () => {
         if (!password.trim()) return toast.error('Password is required')
         if (password !== confirm) return toast.error('Passwords do not match')
         try {
-            await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/v1/users/reset-password/${token}`, { password })
+            await axios.post(`/api/v1/users/reset-password/${token}`, { password })
             toast.success('Password reset successful! Please login.')
             navigate('/login')
         } catch (err) {

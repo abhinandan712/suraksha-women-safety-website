@@ -124,7 +124,7 @@ const Emergency = () => {
     
     try {
       setIsProcessing(true);
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+      const apiUrl = process.env.REACT_APP_API_URL || '';
       
       const response = await axios.put(
         `${apiUrl}/api/v1/users/toggle-sms`,

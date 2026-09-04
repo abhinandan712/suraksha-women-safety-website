@@ -48,7 +48,7 @@ const Profile = () => {
       console.log('Submitting profile update...');
       console.log('Auth token:', auth?.token ? 'Present' : 'Missing');
       
-      const { data } = await axios.put("http://localhost:5000/api/v1/users/update", {
+      const { data } = await axios.put('/api/v1/users/update', {
         uname,
         email,
         phoneNo,

@@ -43,7 +43,7 @@ const TrackMe = () => {
             
             setLocation({ ...currentLocation, formatted_address });
 
-            const response = await fetch('http://localhost:5001/api/v1/tracking/update-location', {
+            const response = await fetch('/api/v1/tracking/update-location', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -92,7 +92,7 @@ const TrackMe = () => {
             console.log('Final emergency contacts:', emergencyContacts);
 
             // Start server tracking and send initial email
-            fetch('http://localhost:5001/api/v1/tracking/start', {
+            fetch('/api/v1/tracking/start', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -142,7 +142,7 @@ const TrackMe = () => {
             toast.success('Tracking stopped');
 
             // Stop server tracking in background
-            fetch('http://localhost:5001/api/v1/tracking/stop', {
+            fetch('/api/v1/tracking/stop', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId: auth.user._id })
@@ -168,7 +168,7 @@ const TrackMe = () => {
             getLocation().then(async (currentLocation) => {
                 const formatted_address = await getFormattedAddress(currentLocation.lat, currentLocation.long);
                 
-                fetch('http://localhost:5001/api/v1/tracking/safe-arrival', {
+                fetch('/api/v1/tracking/safe-arrival', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -179,7 +179,7 @@ const TrackMe = () => {
                     })
                 });
             }).catch(() => {
-                fetch('http://localhost:5001/api/v1/tracking/stop', {
+                fetch('/api/v1/tracking/stop', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userId: auth.user._id })

@@ -15,7 +15,7 @@ const ChatScreen = () => {
   useEffect(() => {
     const fetchUserEmergency = async () => {
       try {
-        const res = await fetch(`http://localhost:5001/api/v1/emergency`);
+        const res = await fetch(`/api/v1/emergency`);
         if (res.ok) {
           const data = await res.json();
           // Find user's most recent emergency
@@ -45,7 +45,7 @@ const ChatScreen = () => {
   
   const fetchChats = async (emergId) => {
     try {
-      const res = await fetch(`http://localhost:5001/api/v1/chats/emergency/${emergId}`);
+      const res = await fetch(`/api/v1/chats/emergency/${emergId}`);
       if (res.ok) {
         const data = await res.json();
         console.log('All emergency chats:', data);
@@ -85,7 +85,7 @@ const ChatScreen = () => {
       
       console.log('Sending payload:', payload);
       
-      const res = await fetch('http://localhost:5001/api/v1/chats', {
+      const res = await fetch('/api/v1/chats', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

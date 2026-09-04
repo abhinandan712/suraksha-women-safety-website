@@ -13,7 +13,7 @@ const ForgotPassword = () => {
         e.preventDefault()
         if (!email.trim()) return toast.error('Email is required')
         try {
-            await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/v1/users/forgot-password`, { email })
+            await axios.post(`/api/v1/users/forgot-password`, { email })
             setSent(true)
             toast.success('Reset link sent to your email')
         } catch (err) {

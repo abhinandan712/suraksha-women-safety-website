@@ -14,7 +14,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:5001/api/v1/emergency`, {
+        const res = await fetch(`/api/v1/emergency`, {
           method: "GET",
           headers: { 'Content-type': 'application/json' }
         });
@@ -41,7 +41,7 @@ const Dashboard = () => {
   const getChats = async (emergId) => {
     try {
       console.log('Loading chats for emergency:', emergId);
-      const res = await fetch(`http://localhost:5001/api/v1/chats/emergency/${emergId}`);
+      const res = await fetch(`/api/v1/chats/emergency/${emergId}`);
       if (res.ok) {
         const data = await res.json();
         console.log('Fetched chats:', data);
@@ -75,7 +75,7 @@ const Dashboard = () => {
         emergId: emergId
       };
 
-      const res = await fetch("http://localhost:5001/api/v1/chats", {
+      const res = await fetch('/api/v1/chats', {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -96,7 +96,7 @@ const Dashboard = () => {
 
   const ackn = async (uid) => {
     try {
-      const res = await fetch(`http://localhost:5001/api/v1/emergency/${uid}`, {
+      const res = await fetch(`/api/v1/emergency/${uid}`, {
         method: "PATCH",
         headers: { 'Content-type': 'application/json' }
       });

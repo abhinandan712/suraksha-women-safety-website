@@ -63,7 +63,7 @@ const Register = () => {
             return false;
         }
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/v1/users/register`,
+            const res = await axios.post(`/api/v1/users/register`,
                 { uname, email, phone, password, emergencyNo, emergencyMail, pincode });
 
             if (res.status === 201) {

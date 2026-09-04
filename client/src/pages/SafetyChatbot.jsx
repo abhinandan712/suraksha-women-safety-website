@@ -14,7 +14,7 @@ const SafetyChatbot = () => {
 
     const getResponse = async (message) => {
         try {
-            const response = await fetch('http://localhost:5001/api/v1/chatbot/chat', {
+            const response = await fetch('/api/v1/chatbot/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

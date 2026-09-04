@@ -1,3 +1,4 @@
+import { getApiUrl } from '../config/api';
 import React, { useState, useEffect, useRef } from 'react';
 import { FaMicrophone, FaStop, FaTimes, FaRobot, FaPaperPlane } from 'react-icons/fa';
 import { useAuth } from '../context/auth';
@@ -131,7 +132,7 @@ const AIAssistant = () => {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
       
-      const response = await fetch('http://localhost:5001/api/v1/chatbot/chat', {
+      const response = await fetch(getApiUrl('/api/v1/chatbot/chat'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: query }),

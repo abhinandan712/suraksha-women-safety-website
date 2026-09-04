@@ -26,7 +26,7 @@ const Feedback = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5001/api/feedback', {
+      const response = await fetch('/api/feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

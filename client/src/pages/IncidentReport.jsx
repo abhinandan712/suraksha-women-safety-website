@@ -10,7 +10,7 @@ const Dashboard = (props) => {
 
   const getAllIncident = async () => {
     try {
-      const res = await fetch('http://localhost:5001/api/v1/incidents',{
+      const res = await fetch('/api/v1/incidents',{
         method: "GET",
         headers: {"Content-type": "application/json"}
       })
@@ -36,7 +36,7 @@ const Dashboard = (props) => {
 
   const acknowledge = async (incId) => {
     try{
-      const res = await fetch(`http://localhost:5001/api/v1/incidents/${incId}`,{
+      const res = await fetch(`/api/v1/incidents/${incId}`,{
         method:"PATCH",
         headers: {'Content-type': 'application/json'}
       });
@@ -167,19 +167,19 @@ const Dashboard = (props) => {
                           <div className="card-body text-center">
                             {file.toLowerCase().includes('.mp4') || file.toLowerCase().includes('.avi') || file.toLowerCase().includes('.mov') ? (
                               <video controls style={{width: '100%', maxHeight: '200px'}}>
-                                <source src={`http://localhost:5001${file}`} type="video/mp4" />
+                                <source src={`${file}`} type="video/mp4" />
                                 Your browser does not support the video tag.
                               </video>
                             ) : (
                               <img 
-                                src={`http://localhost:5001${file}`} 
+                                src={`${file}`} 
                                 alt="Evidence" 
                                 style={{width: '100%', maxHeight: '200px', objectFit: 'cover'}}
                                 onError={(e) => {e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5GaWxlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='}}
                               />
                             )}
                             <div className="mt-2">
-                              <a href={`http://localhost:5001${file}`} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-primary">
+                              <a href={`${file}`} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-primary">
                                 📥 Download
                               </a>
                             </div>

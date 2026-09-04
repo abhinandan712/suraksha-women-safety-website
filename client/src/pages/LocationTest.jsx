@@ -68,7 +68,7 @@ const LocationTest = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5001/api/v1/emergency/emergencyPressed', {
+      const response = await fetch('/api/v1/emergency/emergencyPressed', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -94,7 +94,7 @@ const LocationTest = () => {
     const belagaviLong = 74.4977;
 
     try {
-      const response = await fetch('http://localhost:5001/api/v1/emergency/emergencyPressed', {
+      const response = await fetch('/api/v1/emergency/emergencyPressed', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

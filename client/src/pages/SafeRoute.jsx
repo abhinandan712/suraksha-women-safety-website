@@ -30,7 +30,7 @@ const SafeRoute = () => {
       // Normalize inputs (important)
       const normalize = (text) => text.trim().toLowerCase();
       
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/v1/routes/calculate`, {
+      const response = await fetch(`/api/v1/routes/calculate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

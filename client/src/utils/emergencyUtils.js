@@ -1,12 +1,10 @@
 import toast from "react-hot-toast";
 
 // Get server URL based on environment
+import { getApiUrl } from '../config/api';
+
 const getServerUrl = () => {
-  const hostname = window.location.hostname;
-  if (hostname === 'localhost' || hostname === '127.0.0.1') {
-    return 'http://localhost:5001';
-  }
-  return `http://${hostname}:5001`;
+  return getApiUrl('');
 };
 
 // Prevent multiple simultaneous calls

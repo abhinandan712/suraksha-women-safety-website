@@ -15,7 +15,7 @@ const AdminChat = () => {
   useEffect(() => {
     const fetchEmergencies = async () => {
       try {
-        const res = await fetch('http://localhost:5001/api/v1/emergency');
+        const res = await fetch('/api/v1/emergency');
         if (res.ok) {
           const data = await res.json();
           setEmergencies(data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
@@ -32,7 +32,7 @@ const AdminChat = () => {
   // Fetch chats for selected emergency
   const fetchChats = async (emergencyId) => {
     try {
-      const res = await fetch(`http://localhost:5001/api/v1/chats/emergency/${emergencyId}`);
+      const res = await fetch(`/api/v1/chats/emergency/${emergencyId}`);
       if (res.ok) {
         const data = await res.json();
         setChats(data || []);
@@ -66,7 +66,7 @@ const AdminChat = () => {
     });
 
     try {
-      const res = await fetch('http://localhost:5001/api/v1/chats', {
+      const res = await fetch('/api/v1/chats', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

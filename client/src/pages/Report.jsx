@@ -47,7 +47,7 @@ const Report = () => {
                 formData.append('files', file);
             });
 
-            const res = await axios.post('http://localhost:5001/api/v1/incidents', formData, {
+            const res = await axios.post('/api/v1/incidents', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const errorHandler = require("./middlewares/errorHandler");
 const connectDB = require("./database/db");
 const cors = require("cors");
@@ -46,6 +47,28 @@ const start = async () => {
     console.log(`Server accessible at http://10.52.33.225:${port}`);
   });
 };
+
+// Serverless database connection middleware for Vercel
+let isConnected = false;
+const connectToDatabase = async () => {
+  if (mongoose.connection.readyState >= 1) return;
+  if (!isConnected && process.env.MONGO_URL) {
+    await connectDB(process.env.MONGO_URL);
+    isConnected = true;
+  }
+};
+
+app.use(async (req, res, next) => {
+  if (process.env.VERCEL) {
+    try {
+      await connectToDatabase();
+    } catch (err) {
+      console.error('Serverless DB connection error:', err.message);
+    }
+  }
+  next();
+});
+
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/incidents", incRoutes);
 app.use("/api/v1/emergency", emergencyRoutes);
@@ -60,4 +83,8 @@ app.use('/api/v1/routes',routeRoutes)
 
 app.use(errorHandler);
 
-start();
+if (!process.env.VERCEL) {
+  start();
+}
+
+module.exports = app;
