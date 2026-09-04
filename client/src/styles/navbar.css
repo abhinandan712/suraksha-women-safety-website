@@ -1,0 +1,267 @@
+.learn-more-btn {
+  background-color: blueviolet !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: whitesmoke !important;
+  padding: 12px 29px !important;
+  border-radius: 10px !important;
+  border: 2px solid blueviolet !important;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 10%) !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  transition: 0.7s !important;
+}
+
+.learn-more-btn-logout {
+  background-color: #d11a2a !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: whitesmoke !important;
+  padding: 12px 29px !important;
+  border-radius: 10px !important;
+  border: 2px solid #d11a2a !important;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 10%) !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  transition: 0.7s !important;
+}
+
+.btn-extra-header {
+  color: grey !important;
+  background-color: transparent !important;
+  border: 2px solid grey !important;
+}
+
+.header_wrapper .navbar {
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.header_wrapper .navbar-brand img {
+  max-width: 210px;
+  height: auto;
+}
+.header_wrapper .menu-navbar-nav {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}
+.header_wrapper .nav-item {
+  margin: 0 10px;
+}
+.header_wrapper .nav-item .nav-link {
+  font-weight: bold;
+  font-size: 18px;
+  color: grey;
+  line-height: 1;
+}
+.header_wrapper .nav-item .nav-link.active {
+  color: blueviolet;
+}
+.header-scrolled {
+  position: fixed;
+  margin-top: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 85px;
+  background: white !important;
+  -webkit-box-shadow: 0 4px 6px 0 rgba(12, 0, 46, 0.05);
+  box-shadow: 0 4px 6px 0 rgba(12, 0, 46, 0.05);
+}
+.header-scrolled .navbar-brand img {
+  width: 190px;
+  height: auto;
+  animation: animated 0.3s ease-in-out;
+}
+
+nav {
+  background-color: white;
+}
+
+@keyframes animated {
+  0% {
+    width: 210px;
+  }
+  50% {
+    width: 200px;
+  }
+  100% {
+    width: 190px;
+  }
+}
+.header-scrolled .nav-item .nav-link {
+  font-size: 17px;
+}
+
+/* Modern Hamburger Button */
+.hamburger-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+  transition: all 0.3s ease !important;
+  color: white !important;
+}
+
+.hamburger-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6) !important;
+  color: #ffeb3b !important;
+}
+
+/* Modern Sidebar */
+.modern-sidebar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+  border-radius: 0 20px 20px 0;
+}
+
+.modern-sidebar .border-bottom {
+  border-color: rgba(255,255,255,0.2) !important;
+  padding: 20px !important;
+}
+
+.modern-sidebar h5 {
+  color: white !important;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.modern-sidebar .btn {
+  background: rgba(255,255,255,0.2) !important;
+  border: none !important;
+  color: white !important;
+  border-radius: 50% !important;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.modern-sidebar .btn:hover {
+  background: rgba(255,255,255,0.3) !important;
+  transform: rotate(90deg);
+}
+
+.modern-sidebar .nav-item {
+  margin: 4px 0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.modern-sidebar .nav-item:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateX(8px);
+}
+
+.modern-sidebar .nav-link {
+  color: white !important;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 16px !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease;
+}
+
+.modern-sidebar .nav-link:hover {
+  color: #ffeb3b !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.modern-sidebar .nav-link span {
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+@media (max-width: 1300px) {
+  .header_wrapper .menu-navbar-nav {
+    width: auto;
+  }
+}
+
+@media (max-width: 1230px) {
+  .header_wrapper .nav-item {
+    margin: 0 5px;
+  }
+  .header_wrapper .learn-more-btn {
+    padding: 12px 10px !important;
+  }
+}
+
+@media (max-width: 1070px) {
+  .header_wrapper .nav-item .nav-link {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 991px) {
+  .header_wrapper .navbar-brand img {
+    width: 180px;
+  }
+  .header_wrapper .navbar-toggler:focus {
+    box-shadow: none !important;
+  }
+  .header_wrapper .menu-navbar-nav {
+    text-align: center;
+  }
+  .header_wrapper .nav-item .nav-link {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+  .header_wrapper .nav-item:last-child .nav-link {
+    margin-bottom: 20px;
+  }
+  .header_wrapper .learn-more-btn {
+    padding: 12px 29px !important;
+    margin: 5px !important;
+    display: block !important;
+    width: fit-content !important;
+  }
+  .header_wrapper .learn-more-btn-logout {
+    margin: 5px !important;
+    display: block !important;
+    width: fit-content !important;
+  }
+  .header_wrapper .navbar-collapse {
+    background: var(--bg-white);
+  }
+  .header_wrapper ul.mt-2 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+}
+
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Mobile button spacing fix */
+@media (max-width: 768px) {
+  .header_wrapper .navbar-nav.mt-2 {
+    margin-top: 1rem !important;
+  }
+  .header_wrapper .navbar-nav.mt-2 .nav-item {
+    margin: 8px 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .header_wrapper .learn-more-btn,
+  .header_wrapper .learn-more-btn-logout {
+    margin: 8px auto !important;
+    display: inline-block !important;
+    min-width: 120px !important;
+  }
+}
