@@ -48,22 +48,64 @@ const start = async () => {
   });
 };
 
+// Health check endpoint (does not require database connection)
+app.get('/api/health', (req, res) => {
+  const mongoUrl = process.env.MONGO_URL || '';
+  res.json({
+    status: 'online',
+    environment: process.env.VERCEL ? 'vercel' : 'local',
+    uptime: Math.floor(process.uptime()),
+    database: {
+      state: ['disconnected', 'connected', 'connecting', 'disconnecting'][mongoose.connection.readyState] || 'unknown',
+      configured: Boolean(mongoUrl),
+      isAtlas: mongoUrl.includes('mongodb.net') || mongoUrl.startsWith('mongodb+srv:'),
+      isLocalhost: mongoUrl.includes('localhost') || mongoUrl.includes('127.0.0.1')
+    },
+    services: {
+      groqConfigured: Boolean(process.env.GROQ_API_KEY),
+      jwtConfigured: Boolean(process.env.ACCESS_TOKEN_SECRET),
+      smsConfigured: Boolean(process.env.FAST2SMS_API_KEY)
+    }
+  });
+});
+
 // Serverless database connection middleware for Vercel
-let isConnected = false;
+let dbPromise = null;
 const connectToDatabase = async () => {
-  if (mongoose.connection.readyState >= 1) return;
-  if (!isConnected && process.env.MONGO_URL) {
-    await connectDB(process.env.MONGO_URL);
-    isConnected = true;
+  if (mongoose.connection.readyState === 1) return;
+
+  if (!process.env.MONGO_URL) {
+    throw new Error('MONGO_URL environment variable is missing in Vercel. Please add your MongoDB Atlas connection string in Vercel Project Settings > Environment Variables.');
   }
+
+  if (process.env.MONGO_URL.includes('localhost') || process.env.MONGO_URL.includes('127.0.0.1')) {
+    throw new Error('MONGO_URL is set to localhost. Vercel runs in the cloud and cannot connect to your local computer. Please configure MongoDB Atlas (mongodb+srv://...).');
+  }
+
+  if (!dbPromise) {
+    dbPromise = connectDB(process.env.MONGO_URL).catch((err) => {
+      dbPromise = null;
+      throw err;
+    });
+  }
+
+  await dbPromise;
 };
 
 app.use(async (req, res, next) => {
+  if (req.path === '/api/health') {
+    return next();
+  }
+
   if (process.env.VERCEL) {
     try {
       await connectToDatabase();
     } catch (err) {
       console.error('Serverless DB connection error:', err.message);
+      return res.status(503).json({
+        success: false,
+        message: err.message
+      });
     }
   }
   next();
